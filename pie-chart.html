@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Pie Chart</title>
+    <link href="styles.css" rel="stylesheet">
+    <script src="js/data.js"></script>
+    <script src="js/flotr2.min.js"></script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <a href="#">Home</a>
+        <a
+            href="http://covid-19.moh.gov.my/terkini-negeri/2021/07/kemaskini-negeri-covid-19-di-malaysia-sehingga-09072021">Data
+            Source</a>
+        <div class="dropdown">
+            <button class="dropbtn">Type of Graph
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="bar-chart.html">Bar Chart</a>
+                <a href="line-chart.html">Line Chart</a>
+                <a href="scatter-chart.html">Scatter Chart</a>
+                <a href="pie-chart.html">Pie Chart</a>
+                <a href="bubble-chart.html">Bubble Chart</a>
+                <a href="radar-chart.html">Radar Chart</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">States
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="#">Penang</a>
+                <a href="#">Sarawak</a>
+                <a href="#">Perak</a>
+                <a href="#">Johor</a>
+                <a href="#">Selangor</a>
+            </div>
+        </div>
+    </div>
+
+    <h1>Covid-19 Statistic in Malaysia</h1>
+    <div id='Visualization'>
+        <div id='container' style="width:600px;height:500px;float:left;"></div>
+    </div>
+
+    <script>
+        (function basic_pie(container) {
+            var graph;
+
+            graph = Flotr.draw(container, [{
+                    data: active,
+                    label: "Active",
+                    color: "orange"
+                },
+                {
+                    data: confirmed,
+                    label: "Confirmed",
+                    color: "blue"
+                },
+                {
+                    data: recovered,
+                    label: "Recovered",
+                    pie: {
+                        //explode: 50
+                    },
+                    color: "green"
+                },
+                {
+                    data: fatal,
+                    label: "Fatal",
+                    color: "red"
+                }
+            ], {
+                HtmlText: false,
+                title: "Basic Pie Chart",
+                grid: {
+                    verticalLines: false,
+                    horizontalLines: false
+                },
+                xaxis: {
+                    showLabels: false
+                },
+                yaxis: {
+                    showLabels: false
+                },
+                pie: {
+                    show: true,
+                    explode: 6
+                },
+                mouse: {
+                    track: true
+                },
+                legend: {
+                    position: 'ne',
+                    backgroundColor: '#D2E8FF'
+                }
+            });
+        })(document.getElementById("container"));
+    </script>
+
+    <div class="footer">
+        <div class="icon">
+            <!-- Add font awesome icons -->
+            <a href="#" class="fa fa-instagram"></a>
+            <a href="#" class="fa fa-facebook"></a>
+            <a href="#" class="fa fa-twitter"></a>
+            <a href="#" class="fa fa-linkedin"></a>
+        </div>
+        <div class="menu">
+
+        </div>
+        <div class="company">
+            <span>Powered by
+                <a href="https://humblesoftware.com/flotr2/documentation">
+                    flotr2
+                </a>
+            </span><br>
+            <span>AttackOn © 2021</span>
+        </div>
+    </div>
+</body>
+
+</html>

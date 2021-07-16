@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Scatter Chart</title>
+    <link href="styles.css" rel="stylesheet">
+    <script src="js/dataset-full.js"></script>
+    <script src="js/flotr2.min.js"></script>
+    <!-- Add icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <a href="test.html">Test</a>
+        <a
+            href="http://covid-19.moh.gov.my/terkini-negeri/2021/07/kemaskini-negeri-covid-19-di-malaysia-sehingga-09072021">Data
+            Source</a>
+        <div class="dropdown">
+            <button class="dropbtn">Type of Graph
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="bar-chart.html">Bar Chart</a>
+                <a href="line-chart.html">Line Chart</a>
+                <a href="scatter-chart.html">Scatter Chart</a>
+                <a href="pie-chart.html">Pie Chart</a>
+                <a href="bubble-chart.html">Bubble Chart</a>
+                <a href="radar-chart.html">Radar Chart</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">States
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="#">Penang</a>
+                <a href="#">Sarawak</a>
+                <a href="#">Perak</a>
+                <a href="#">Johor</a>
+                <a href="#">Selangor</a>
+            </div>
+        </div>
+    </div>
+
+    <h1>Covid-19 Statistic in Malaysia</h1>
+    <h2>Icon Buttons</h2>
+    <p>Icon buttons:</p>
+    <button class="btn"><i class="fa fa-home"></i></button>
+    <button class="btn"><i class="fa fa-bars"></i></button>
+    <button class="btn"><i class="fa fa-trash"></i></button>
+    <button class="btn"><i class="fa fa-close"></i></button>
+    <button class="btn"><i class="fa fa-folder"></i></button>
+
+    <p>Icon buttons with text:</p>
+    <button class="btn"><i class="fa fa-home"></i> Home</button>
+    <button class="btn"><i class="fa fa-bars"></i> Menu</button>
+    <button class="btn"><i class="fa fa-trash"></i> Trash</button>
+    <button class="btn"><i class="fa fa-close"></i> Close</button>
+    <button class="btn"><i class="fa fa-folder"></i> Folder</button>
+    <div id='wrapper-scatter-chart'>
+        <div id='scatter-chart'></div>
+    </div>
+
+    <script>
+        (function basic_scatter(container) {
+            var kelantan = dataset[0][0];
+            var sarawak = dataset[1][0];
+            var selangor = dataset[2][0];
+            var terengganu = dataset[3][0];
+            var melaka = dataset[4][0];
+
+            // Plot the graph
+            graph = Flotr.draw(container,
+                [{
+                        data: kelantan[0],
+                        label: "Kelantan",
+                        color: "lightblue",
+                        points: {
+                            show: true,
+                            showLabels: true,
+                            label: "Kelantan",
+                            title: "Kelantan"
+                        }
+                    },
+                    {
+                        data: sarawak[0],
+                        label: "Sarawak",
+                        color: "orange",
+                        points: {
+                            show: true
+                        }
+                    }, {
+                        data: selangor[0],
+                        label: "Selangor",
+                        color: "green",
+                        points: {
+                            show: true
+                        }
+                    },
+                    {
+                        data: terengganu[0],
+                        label: "Terengganu",
+                        color: "red",
+                        points: {
+                            show: true,
+                        }
+                    },
+                    {
+                        data: melaka[0],
+                        label: "Melaka",
+                        color: "darkblue",
+                        points: {
+                            show: true,
+                        }
+                    }
+                ], {
+                    title: "5 States in Malaysia",
+                    subtitle: "Active Cases",
+                    grid: {
+                        horizontalLines: false,
+                        verticalLines: false
+                    },
+                    xaxis: {
+                        ticks: date,
+                        title: "Date"
+                    },
+                    yaxis: {
+                        min: 0,
+                        max: 15000,
+                        title: "Active Cases"
+                    },
+                    legend: {
+                        position: 'nw',
+                        backgroundColor: '#D2E8FF',
+                    },
+                    mouse: {
+                        track: true,
+                        sensibility: 10,
+                        trackDecimals: 0
+                    }
+                }
+            );
+
+        })(document.getElementById("scatter-chart"));
+    </script>
+
+    <div class="footer">
+        <div class="icon">
+            <!-- Add font awesome icons -->
+            <a href="#" class="fa fa-instagram"></a>
+            <a href="#" class="fa fa-facebook"></a>
+            <a href="#" class="fa fa-twitter"></a>
+            <a href="#" class="fa fa-linkedin"></a>
+        </div>
+        <div class="menu">
+
+        </div>
+        <div class="company">
+            <span>Powered by
+                <a href="https://humblesoftware.com/flotr2/documentation">
+                    flotr2
+                </a>
+            </span><br>
+            <span>AttackOn © 2021</span>
+        </div>
+    </div>
+</body>
+
+</html>
